@@ -1,0 +1,25 @@
+# Buildozer
+.buildozer/
+bin/
+build/
+buildozer.spec
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# IDE
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
