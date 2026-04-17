@@ -1,0 +1,150 @@
+<TestScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.1, 0.1, 0.1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 30, 20, 20]
+        spacing: 15
+
+        # --- Header Section ---
+        BoxLayout:
+            size_hint_y: None
+            height: 40
+            Label:
+                id: qno
+                text: "Question 1/5"
+                halign: 'left'
+                text_size: self.size
+                bold: True
+            Label:
+                id: timer
+                text: "Time: 30"
+                halign: 'right'
+                text_size: self.size
+                color: (1, 0.3, 0.3, 1) if root.time_left < 10 else (1, 1, 1, 1)
+
+        ProgressBar:
+            id: progress
+            max: 5
+            value: 1
+            size_hint_y: None
+            height: 10
+
+        Label:
+            id: score_label
+            text: "Score: 0"
+            size_hint_y: None
+            height: 30
+            color: (0.2, 0.6, 1, 1)
+            bold: True
+
+        # --- Question Card ---
+        BoxLayout:
+            orientation: "vertical"
+            padding: 20
+            size_hint_y: 0.4
+            canvas.before:
+                Color:
+                    rgba: (0.15, 0.15, 0.15, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15,]
+                Color:
+                    rgba: (0.2, 0.6, 1, 1) # Top accent line
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 15)
+
+            Label:
+                id: question
+                text: "What is the symbol of water?"
+                font_size: '20sp'
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.width - 20, None
+                color: (1, 1, 1, 1)
+
+        Label:
+            id: feedback
+            text: ""
+            size_hint_y: None
+            height: 30
+            bold: True
+
+        # --- Options Section ---
+        GridLayout:
+            cols: 1
+            spacing: 10
+            size_hint_y: 0.5
+
+            # I'm using a template-like style here for consistency
+            Button:
+                id: opt1
+                text: "Option 1"
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_release: root.check_answer(self.text)
+                canvas.before:
+                    Color:
+                        rgba: (0.2, 0.2, 0.2, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10,]
+
+            Button:
+                id: opt2
+                text: "Option 2"
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_release: root.check_answer(self.text)
+                canvas.before:
+                    Color:
+                        rgba: (0.2, 0.2, 0.2, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10,]
+
+            Button:
+                id: opt3
+                text: "Option 3"
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_release: root.check_answer(self.text)
+                canvas.before:
+                    Color:
+                        rgba: (0.2, 0.2, 0.2, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10,]
+
+            Button:
+                id: opt4
+                text: "Option 4"
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_release: root.check_answer(self.text)
+                canvas.before:
+                    Color:
+                        rgba: (0.2, 0.2, 0.2, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10,]
+
+        # --- Footer Section ---
+        Button:
+            text: "SKIP QUESTION"
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: (0.3, 0.3, 0.3, 1)
+            on_release: root.skip_question()

@@ -1,0 +1,65 @@
+<LeaderboardScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.1, 0.1, 0.1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 40, 20, 20]
+        spacing: 15
+
+        Label:
+            text: "GLOBAL LEADERBOARD"
+            font_size: '26sp'
+            bold: True
+            color: (0.2, 0.6, 1, 1)
+            size_hint_y: None
+            height: 60
+
+        # --- Table Header ---
+        BoxLayout:
+            size_hint_y: None
+            height: 40
+            padding: [10, 0]
+            canvas.before:
+                Color:
+                    rgba: (0.2, 0.2, 0.2, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "Rank"
+                bold: True
+                size_hint_x: 0.2
+            Label:
+                text: "User"
+                bold: True
+                size_hint_x: 0.5
+                halign: 'left'
+            Label:
+                text: "Score"
+                bold: True
+                size_hint_x: 0.3
+
+        # --- Scrollable List Area ---
+        ScrollView:
+            do_scroll_x: False
+            BoxLayout:
+                id: leaderboard_list
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 5
+                # This area will be populated via Python with labels or cards
+
+        # --- Footer Area ---
+        Button:
+            text: "BACK TO DASHBOARD"
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: (0.3, 0.3, 0.3, 1)
+            on_release: app.root.current = "dashboard"

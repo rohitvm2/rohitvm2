@@ -1,4 +1,4 @@
-from database.db import create_tables, create_admin
+from database.db import create_tables, create_admin, seed_questions
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from kivy.lang import Builder
@@ -11,6 +11,11 @@ from screens.leaderboard import LeaderboardScreen
 from screens.my_results import MyResultsScreen
 from kivy.properties import StringProperty
 from screens.profile import ProfileScreen
+from screens.category import CategoryScreen
+from screens.instructions import InstructionScreen
+from screens.review import ReviewScreen
+from kivy.uix.screenmanager import SlideTransition
+
 
 class MockTestApp(App):
     current_user = StringProperty("")
@@ -20,25 +25,33 @@ class MockTestApp(App):
 
         create_tables()
         create_admin()
+        seed_questions()
 
         Builder.load_file("kv/login.kv")
         Builder.load_file("kv/profile.kv")
         Builder.load_file("kv/dashboard.kv")
+        Builder.load_file("kv/category.kv")
+        Builder.load_file("kv/instructions.kv")
         Builder.load_file("kv/test.kv")
         Builder.load_file("kv/result.kv")
         Builder.load_file("kv/admin.kv")
         Builder.load_file("kv/leaderboard.kv")
         Builder.load_file("kv/my_results.kv")
+        Builder.load_file("kv/review.kv")
 
         sm = ScreenManager()
+        sm = ScreenManager(transition=SlideTransition(direction='left'))
         sm.add_widget(LoginScreen(name="login"))
         sm.add_widget(ProfileScreen(name="profile"))
         sm.add_widget(DashboardScreen(name="dashboard"))
         sm.add_widget(TestScreen(name="test"))
+        sm.add_widget(CategoryScreen(name="category"))
+        sm.add_widget(InstructionScreen(name="instructions"))
         sm.add_widget(ResultScreen(name="result"))
         sm.add_widget(AdminScreen(name="admin"))
         sm.add_widget(LeaderboardScreen(name="leaderboard"))
         sm.add_widget(MyResultsScreen(name="my_results"))
+        sm.add_widget(ReviewScreen(name="review"))
         return sm
 
 if __name__ == "__main__":

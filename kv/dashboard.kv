@@ -1,0 +1,118 @@
+<DashboardScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.1, 0.1, 0.1, 1)  # Matching Login Background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 40, 20, 20]
+        spacing: 20
+
+        # --- Header Section ---
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: 100
+            spacing: 5
+
+            Label:
+                text: "MOCK TEST APP"
+                font_size: '22sp'
+                bold: True
+                color: (0.2, 0.6, 1, 1)
+
+            Label:
+                text: f"Welcome, {app.current_user}!"
+                font_size: '18sp'
+                color: (0.8, 0.8, 0.8, 1)
+
+        Widget: # Small Spacer
+            size_hint_y: None
+            height: 10
+
+        # --- Main Menu Grid ---
+        GridLayout:
+            cols: 2
+            spacing: 15
+            padding: 10
+
+            # Start Test (Primary Action)
+            Button:
+                text: "START TEST"
+                bold: True
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_release: app.root.current = "category"
+                canvas.before:
+                    Color:
+                        rgba: (0.2, 0.6, 1, 1) if self.state == 'normal' else (0.1, 0.4, 0.8, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [15,]
+
+            # Profile
+            Button:
+                text: "PROFILE"
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_release:
+                    root.manager.get_screen("profile").user = root.user
+                    root.manager.current = "profile"
+                canvas.before:
+                    Color:
+                        rgba: (0.2, 0.2, 0.2, 1) if self.state == 'normal' else (0.3, 0.3, 0.3, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [15,]
+
+            # View Results
+            Button:
+                text: "MY RESULTS"
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_release: app.root.current = "my_results"
+                canvas.before:
+                    Color:
+                        rgba: (0.2, 0.2, 0.2, 1) if self.state == 'normal' else (0.3, 0.3, 0.3, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [15,]
+
+            # Leaderboard
+            Button:
+                text: "LEADERBOARD"
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_release: app.root.current = "leaderboard"
+                canvas.before:
+                    Color:
+                        rgba: (0.2, 0.2, 0.2, 1) if self.state == 'normal' else (0.3, 0.3, 0.3, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [15,]
+
+        # --- Footer Area ---
+        Widget:
+            size_hint_y: 1 # Pushes logout to the bottom
+
+        Button:
+            text: "LOGOUT"
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: (0, 0, 0, 0)
+            on_release: app.root.current = "login"
+            canvas.before:
+                Color:
+                    rgba: (0.8, 0.3, 0.3, 1) if self.state == 'normal' else (0.6, 0.2, 0.2, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]

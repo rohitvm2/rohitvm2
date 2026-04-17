@@ -1,0 +1,72 @@
+<MyResultsScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.1, 0.1, 0.1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 40, 20, 20]
+        spacing: 15
+
+        Label:
+            text: "MY TEST HISTORY"
+            font_size: '26sp'
+            bold: True
+            color: (0.2, 0.6, 1, 1)
+            size_hint_y: None
+            height: 60
+
+        # --- Table Header ---
+        BoxLayout:
+            size_hint_y: None
+            height: 40
+            padding: [10, 0]
+            canvas.before:
+                Color:
+                    rgba: (0.2, 0.2, 0.2, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [5,]
+            Label:
+                text: "Category"
+                bold: True
+                size_hint_x: 0.4
+            Label:
+                text: "Score"
+                bold: True
+                size_hint_x: 0.2
+            Label:
+                text: "Date"
+                bold: True
+                size_hint_x: 0.4
+
+        # --- Scrollable Results ---
+        ScrollView:
+            do_scroll_x: False
+            BoxLayout:
+                id: container
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 5
+                padding: [0, 10]
+
+        # --- Navigation ---
+        Button:
+            text: "BACK TO DASHBOARD"
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: (0.3, 0.3, 0.3, 1)
+            on_release: app.root.current = "dashboard"
+            canvas.before:
+                Color:
+                    rgba: (0.3, 0.3, 0.3, 1) if self.state == 'normal' else (0.2, 0.2, 0.2, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]

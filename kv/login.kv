@@ -1,0 +1,125 @@
+<LoginScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.1, 0.1, 0.1, 1)  # Deep Charcoal Background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [40, 60, 40, 60]
+        spacing: 15
+
+        # --- Header Section ---
+        Label:
+            text: "MOCK TEST"
+            font_size: '34sp'
+            bold: True
+            color: (0.2, 0.6, 1, 1)
+            size_hint_y: None
+            height: 100
+
+        Widget:
+            size_hint_y: None
+            height: 20
+
+        # --- Input Section ---
+        # Note: We keep the email ID here so your registration logic still works!
+
+        TextInput:
+            id: username
+            hint_text: "Username or Email"
+            multiline: False
+            size_hint_y: None
+            height: 50
+            padding: [15, 12]
+            background_normal: ''
+            background_color: (0.15, 0.15, 0.15, 1)
+            foreground_color: (1, 1, 1, 1)
+            cursor_color: (0.2, 0.6, 1, 1)
+            canvas.after:
+                Color:
+                    rgba: (0.3, 0.3, 0.3, 1)
+                Line:
+                    width: 1.1
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 8)
+
+        TextInput:
+            id: email
+            hint_text: "Email (for Registration only)"
+            multiline: False
+            size_hint_y: None
+            height: 50
+            padding: [15, 12]
+            background_normal: ''
+            background_color: (0.15, 0.15, 0.15, 1)
+            foreground_color: (1, 1, 1, 1)
+            canvas.after:
+                Color:
+                    rgba: (0.3, 0.3, 0.3, 1)
+                Line:
+                    width: 1.1
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 8)
+
+        TextInput:
+            id: password
+            hint_text: "Password"
+            password: True
+            multiline: False
+            size_hint_y: None
+            height: 50
+            padding: [15, 12]
+            background_normal: ''
+            background_color: (0.15, 0.15, 0.15, 1)
+            foreground_color: (1, 1, 1, 1)
+            canvas.after:
+                Color:
+                    rgba: (0.3, 0.3, 0.3, 1)
+                Line:
+                    width: 1.1
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 8)
+
+        # --- Error Message ---
+        Label:
+            id: message
+            text: ""
+            font_size: '14sp'
+            color: (1, 0.3, 0.3, 1)
+            size_hint_y: None
+            height: 30
+
+        # --- Action Section ---
+        Button:
+            text: "LOGIN"
+            bold: True
+            size_hint_y: None
+            height: 55
+            background_normal: ''
+            background_color: (0, 0, 0, 0) # Transparent to use canvas
+            on_press: root.login()
+            canvas.before:
+                Color:
+                    rgba: (0.2, 0.6, 1, 1) if self.state == 'normal' else (0.1, 0.4, 0.8, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+
+        Button:
+            text: "REGISTER"
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: (0, 0, 0, 0)
+            on_press: root.register()
+            canvas.before:
+                Color:
+                    rgba: (0.3, 0.3, 0.3, 1) if self.state == 'normal' else (0.2, 0.2, 0.2, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+
+        Widget: # Bottom Spacer to push everything up
+            size_hint_y: 1

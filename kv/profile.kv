@@ -1,0 +1,114 @@
+<ProfileScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.1, 0.1, 0.1, 1)  # Matching Dark Background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [30, 50, 30, 30]
+        spacing: 20
+
+        Label:
+            text: "MY PROFILE"
+            font_size: '28sp'
+            bold: True
+            color: (0.2, 0.6, 1, 1)
+            size_hint_y: None
+            height: 60
+
+        # --- Profile Avatar Placeholder ---
+        BoxLayout:
+            size_hint_y: None
+            height: 120
+            Label:
+                text: "👤"
+                font_size: '90sp'
+
+        # --- User Info Card ---
+        BoxLayout:
+            orientation: "vertical"
+            padding: 20
+            spacing: 15
+            size_hint_y: None
+            height: 180
+            canvas.before:
+                Color:
+                    rgba: (0.15, 0.15, 0.15, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15,]
+                Color:
+                    rgba: (0.3, 0.3, 0.3, 1)
+                Line:
+                    width: 1.1
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 15)
+
+            # Username Row
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "USERNAME"
+                    font_size: '12sp'
+                    color: (0.5, 0.5, 0.5, 1)
+                    halign: 'left'
+                    text_size: self.size
+                Label:
+                    id: username
+                    text: "Amol" # This is populated via login.py
+                    font_size: '18sp'
+                    halign: 'left'
+                    text_size: self.size
+
+            # Email Row
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "EMAIL ADDRESS"
+                    font_size: '12sp'
+                    color: (0.5, 0.5, 0.5, 1)
+                    halign: 'left'
+                    text_size: self.size
+                Label:
+                    id: email
+                    text: "amol@example.com" # This is populated via login.py
+                    font_size: '18sp'
+                    halign: 'left'
+                    text_size: self.size
+
+        Widget:
+            size_hint_y: 1 # Pushes buttons to bottom
+
+        # --- Buttons ---
+        Button:
+            text: "BACK TO DASHBOARD"
+            size_hint_y: None
+            height: 55
+            background_normal: ''
+            background_color: (0, 0, 0, 0)
+            on_release: app.root.current = "dashboard"
+            canvas.before:
+                Color:
+                    rgba: (0.2, 0.6, 1, 1) if self.state == 'normal' else (0.1, 0.4, 0.8, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+
+        Button:
+            text: "LOGOUT"
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: (0, 0, 0, 0)
+            on_release: app.root.current = "login"
+            canvas.before:
+                Color:
+                    rgba: (0.8, 0.3, 0.3, 1) if self.state == 'normal' else (0.6, 0.2, 0.2, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]

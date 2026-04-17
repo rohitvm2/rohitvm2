@@ -1,0 +1,66 @@
+<CategoryScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        Label:
+            text: "Select Category"
+            font_size: '26sp'
+            bold: True
+            size_hint_y: None
+            height: 80
+            color: (0.2, 0.6, 1, 1)
+
+        ScrollView:
+            GridLayout:
+                cols: 2
+                spacing: 20
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 10
+
+                # Subject: Python
+                Button:
+                    text: "Python"
+                    size_hint_y: None
+                    height: 120
+                    background_normal: ''
+                    background_color: (0.2, 0.4, 0.6, 1)
+                    on_release: root.select_category("Python")
+
+                # Subject: Data Science
+                Button:
+                    text: "Data Science"
+                    size_hint_y: None
+                    height: 120
+                    background_normal: ''
+                    background_color: (0.1, 0.5, 0.5, 1)
+                    on_release: root.select_category("Data Science")
+
+                # Subject: Mathematics
+                Button:
+                    text: "Mathematics"
+                    size_hint_y: None
+                    height: 120
+                    background_normal: ''
+                    background_color: (0.4, 0.3, 0.6, 1)
+                    on_release: root.select_category("Maths")
+
+                # Subject: GK
+                Button:
+                    text: "General\nKnowledge"
+                    halign: 'center'
+                    size_hint_y: None
+                    height: 120
+                    background_normal: ''
+                    background_color: (0.6, 0.4, 0.2, 1)
+                    on_release: root.select_category("GK")
+
+        Button:
+            text: "Back"
+            size_hint_y: None
+            height: 50
+            background_normal: ''
+            background_color: (0.3, 0.3, 0.3, 1)
+            on_release: root.go_back()

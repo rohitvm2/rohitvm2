@@ -1,0 +1,101 @@
+<AdminScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.1, 0.1, 0.1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    ScrollView:
+        BoxLayout:
+            orientation: "vertical"
+            padding: 30
+            spacing: 12
+            size_hint_y: None
+            height: self.minimum_height
+
+            Label:
+                text: "ADMIN PANEL"
+                font_size: '26sp'
+                bold: True
+                color: (0.2, 0.6, 1, 1)
+                size_hint_y: None
+                height: 60
+
+            # --- Input Fields ---
+            TextInput:
+                id: q
+                hint_text: "Enter Question"
+                size_hint_y: None
+                height: 50
+                background_color: (0.15, 0.15, 0.15, 1)
+                foreground_color: (1, 1, 1, 1)
+
+            TextInput:
+                id: category
+                hint_text: "Category (e.g., Python, Maths, Data Science)"
+                size_hint_y: None
+                height: 50
+                background_color: (0.15, 0.15, 0.15, 1)
+                foreground_color: (0.2, 0.6, 1, 1) # Highlighted for admin
+
+            GridLayout:
+                cols: 2
+                spacing: 10
+                size_hint_y: None
+                height: 110
+                TextInput:
+                    id: o1
+                    hint_text: "Option 1"
+                    height: 50
+                TextInput:
+                    id: o2
+                    hint_text: "Option 2"
+                    height: 50
+                TextInput:
+                    id: o3
+                    hint_text: "Option 3"
+                    height: 50
+                TextInput:
+                    id: o4
+                    hint_text: "Option 4"
+                    height: 50
+
+            TextInput:
+                id: ans
+                hint_text: "Correct Answer (Must match an option exactly)"
+                size_hint_y: None
+                height: 50
+                background_color: (0.15, 0.15, 0.15, 1)
+                foreground_color: (0.1, 0.8, 0.4, 1) # Green for answer
+
+            # --- Action Buttons ---
+            Button:
+                text: "ADD QUESTION"
+                bold: True
+                size_hint_y: None
+                height: 55
+                background_normal: ''
+                background_color: (0,0,0,0)
+                on_release: root.add_question()
+                canvas.before:
+                    Color:
+                        rgba: (0.2, 0.6, 1, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10,]
+
+            Label:
+                id: msg
+                text: ""
+                color: (1, 0.3, 0.3, 1)
+                size_hint_y: None
+                height: 30
+
+            Button:
+                text: "Back to Dashboard"
+                size_hint_y: None
+                height: 45
+                background_color: (0.3, 0.3, 0.3, 1)
+                on_release: app.root.current = "dashboard"
