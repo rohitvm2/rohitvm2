@@ -1,0 +1,12 @@
+<MyResultsScreen>:
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            id: result_list
+            text: "My Results"
+            color: (1,1,1,1)
+
+        Button:
+            text: "Back"
+            on_press: app.root.current = "dashboard"

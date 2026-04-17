@@ -1,0 +1,14 @@
+<LeaderboardScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 30
+        spacing: 20
+
+        Label:
+            id: leaderboard
+            text: "Leaderboard"
+            color: (1,1,1,1)
+
+        Button:
+            text: "Back"
+            on_press: app.root.current = "dashboard"
