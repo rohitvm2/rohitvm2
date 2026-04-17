@@ -3,6 +3,8 @@
 bin/
 build/
 buildozer.spec
+buildozer-env/
+buildozer-venv/
 
 # Python
 __pycache__/
